@@ -20,3 +20,11 @@ export type AuthParamList = {
   Login: undefined;
   Register: undefined;
 };
+
+export type ShopParamList = {
+  ShopScreen: undefined;
+}
+
+export type OrdersParamList = {
+  Order: undefined;
+}

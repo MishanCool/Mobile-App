@@ -7,7 +7,8 @@ import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
-import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import ShopScreen from '../screens/ShopScreen';
+import { BottomTabParamList, TabOneParamList, TabTwoParamList, ShopParamList, OrdersParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -20,7 +21,7 @@ export default function BottomTabNavigator() {
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
       <BottomTab.Screen
         name="TabOne"
-        component={TabOneNavigator}
+        component={ShopNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
@@ -69,5 +70,19 @@ function TabTwoNavigator() {
         options={{ headerTitle: 'Tab Two Title' }}
       />
     </TabTwoStack.Navigator>
+  );
+}
+
+const ShopStack = createStackNavigator<ShopParamList>();
+
+function ShopNavigator() {
+  return (
+    <ShopStack.Navigator>
+      <ShopStack.Screen
+        name="ShopScreen"
+        component={ShopScreen}
+        options={{headerTitle: 'Shop'}}
+      />
+    </ShopStack.Navigator>
   );
 }
