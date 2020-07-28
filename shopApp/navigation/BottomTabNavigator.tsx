@@ -12,6 +12,7 @@ import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
 import MyShopList from '../screens/MyShopList';
 import createShop from '../screens/CreateShop';
 import ShopView from '../screens/ShopView';
+import AddProducts from '../screens/AddProducts';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -83,7 +84,7 @@ function TabTwoNavigator() {
         component={ShopView}
         options={({ route }) => ({ headerTitle: route.params.title })}
       />
-      {/* <TabTwoStack.Screen name="AddProducts" component={AddProducts} options={{ headerTitle: 'Add Products' }} /> */}
+      <TabTwoStack.Screen name="AddProducts" component={AddProducts} options={{ headerTitle: 'Add Products' }} />
     </TabTwoStack.Navigator>
   );
 }
