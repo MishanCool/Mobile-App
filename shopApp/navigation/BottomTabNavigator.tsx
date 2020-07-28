@@ -10,6 +10,7 @@ import TabTwoScreen from '../screens/TabTwoScreen';
 import ShopListScreen from '../screens/ShopListScreen';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
 import MyShopList from '../screens/MyShopList';
+import createShop from '../screens/CreateShop';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -75,8 +76,8 @@ function TabTwoNavigator() {
         component={MyShopList}
         options={{ headerTitle: 'My Shops', headerTitleContainerStyle: { alignItems: 'center' } }}
       />
-      {/* <TabTwoStack.Screen name="CreateShop" component={createShop} options={{ headerTitle: 'Make a Shop' }} />
-      <TabTwoStack.Screen
+      <TabTwoStack.Screen name="CreateShop" component={createShop} options={{ headerTitle: 'Make a Shop' }} />
+      {/* <TabTwoStack.Screen
         name="ShopView"
         component={ShopView}
         options={({ route }) => ({ headerTitle: route.params.title })}
