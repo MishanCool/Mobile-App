@@ -7,8 +7,9 @@ import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
-import ShopScreen from '../screens/ShopScreen';
-import { BottomTabParamList, TabOneParamList, TabTwoParamList, ShopParamList, OrdersParamList } from '../types';
+import ShopListScreen from '../screens/ShopListScreen';
+import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import MyShopList from '../screens/MyShopList';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -16,21 +17,21 @@ export default function BottomTabNavigator() {
   const colorScheme = useColorScheme();
 
   return (
-    <BottomTab.Navigator
-      initialRouteName="TabOne"
-      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
+    <BottomTab.Navigator initialRouteName="TabOne" tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
       <BottomTab.Screen
         name="TabOne"
-        component={ShopNavigator}
+        component={TabOneNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="md-cart" color={color} />,
+          title: 'Shops',
         }}
       />
       <BottomTab.Screen
         name="TabTwo"
         component={TabTwoNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="md-grid" color={color} />,
+          title: 'My Shops',
         }}
       />
     </BottomTab.Navigator>
@@ -51,10 +52,15 @@ function TabOneNavigator() {
   return (
     <TabOneStack.Navigator>
       <TabOneStack.Screen
-        name="TabOneScreen"
-        component={TabOneScreen}
-        options={{ headerTitle: 'Tab One Title' }}
+        name="ShopList"
+        component={ShopListScreen}
+        options={{ headerTitle: 'Shops', headerTitleContainerStyle: { alignItems: 'center' } }}
       />
+      {/* <TabOneStack.Screen
+        name="shopView"
+        component={ShopView}
+        options={({ route }) => ({ headerTitle: route.params.title })}
+      /> */}
     </TabOneStack.Navigator>
   );
 }
@@ -65,24 +71,17 @@ function TabTwoNavigator() {
   return (
     <TabTwoStack.Navigator>
       <TabTwoStack.Screen
-        name="TabTwoScreen"
-        component={TabTwoScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
+        name="MyShopList"
+        component={MyShopList}
+        options={{ headerTitle: 'My Shops', headerTitleContainerStyle: { alignItems: 'center' } }}
       />
+      {/* <TabTwoStack.Screen name="CreateShop" component={createShop} options={{ headerTitle: 'Make a Shop' }} />
+      <TabTwoStack.Screen
+        name="ShopView"
+        component={ShopView}
+        options={({ route }) => ({ headerTitle: route.params.title })}
+      />
+      <TabTwoStack.Screen name="AddProducts" component={AddProducts} options={{ headerTitle: 'Add Products' }} /> */}
     </TabTwoStack.Navigator>
-  );
-}
-
-const ShopStack = createStackNavigator<ShopParamList>();
-
-function ShopNavigator() {
-  return (
-    <ShopStack.Navigator>
-      <ShopStack.Screen
-        name="ShopScreen"
-        component={ShopScreen}
-        options={{headerTitle: 'Shop'}}
-      />
-    </ShopStack.Navigator>
   );
 }

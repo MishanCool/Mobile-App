@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
-interface orderProps {}
+interface ShopListScreenProps {}
 
-const order = (props: orderProps) => {
+const ShopListScreen = (props: ShopListScreenProps) => {
   return (
     <View style={styles.container}>
-      <Text>order</Text>
+      <Text>ShopListScreen</Text>
     </View>
   );
 };
 
-export default order;
+export default ShopListScreen;
 
 const styles = StyleSheet.create({
   container: {}

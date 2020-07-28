@@ -9,11 +9,15 @@ export type BottomTabParamList = {
 };
 
 export type TabOneParamList = {
-  TabOneScreen: undefined;
+  ShopList: undefined;
+  shopView: { shopId?: string; title?: string };
 };
 
 export type TabTwoParamList = {
-  TabTwoScreen: undefined;
+  MyShopList: undefined;
+  CreateShop: undefined;
+  ShopView: { shopId?: string, title?: string };
+  AddProducts: { shopId?: string };
 };
 
 export type AuthParamList = {
@@ -21,10 +25,27 @@ export type AuthParamList = {
   Register: undefined;
 };
 
-export type ShopParamList = {
-  ShopScreen: undefined;
+export type User = {
+  username?: string;
+  phone?: string;
+  address?: string;
+  shops?: Array<string | null>;
+};
+
+export type Shop = {
+  ownerId?: string;
+  shopId?: string;
+  shopname?: string;
+  contact?: string;
+  address?: string;
+  description?: string;
+  products?: Array<Product>
 }
 
-export type OrdersParamList = {
-  Order: undefined;
+export type Product = {
+  productId?: string;
+  name?: string;
+  description?: string;
+  price?: string;
+  image?: string;
 }
